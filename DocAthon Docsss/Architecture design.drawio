@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0" version="27.0.2">
+  <diagram name="Page-1" id="n1SpImW-6Twlqz39c4bh">
+    <mxGraphModel dx="-113" dy="2793" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="light-dark(#FFFFFF,#FFFFFF)" math="0" shadow="0" adaptiveColors="simple">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aDv4anhYwVwWm1UOLou--6" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&amp;nbsp;Doctor Frontend&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;--&amp;gt; UPLOAD AUDIO FILE&amp;nbsp;&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;--&amp;gt;&amp;nbsp; VIEW SOAP NOTES&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fillColor=#cdeb8b;strokeColor=#36393d;shadow=1;sketch=1;curveFitting=1;jiggle=2;strokeWidth=1.5;opacity=70;" parent="1" vertex="1">
+          <mxGeometry x="2873.5" y="-1032" width="210" height="111" as="geometry" />
+        </mxCell>
+        <mxCell id="0I5pf4p2CHR6fEAQSS_W-1" value="&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&amp;nbsp;Backend Server&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;(PYTHON FAST-API)&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;--&amp;gt; API FOR FILE UPLOAD&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;--&amp;gt; AUTH + ERROR LOGGING&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fillColor=#cdeb8b;strokeColor=#36393d;align=center;shadow=1;sketch=1;curveFitting=1;jiggle=2;strokeWidth=1.5;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="2868.5" y="-834" width="210" height="111" as="geometry" />
+        </mxCell>
+        <mxCell id="0I5pf4p2CHR6fEAQSS_W-2" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;Transcription API&amp;nbsp;&lt;/font&gt;&lt;div&gt;&lt;font color=&quot;#000000&quot;&gt;( WHISPER / GOOGLE STT )&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fillColor=#cdeb8b;strokeColor=#36393d;shadow=1;sketch=1;curveFitting=1;jiggle=2;strokeWidth=1.5;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="2871" y="-651" width="210" height="111" as="geometry" />
+        </mxCell>
+        <mxCell id="0I5pf4p2CHR6fEAQSS_W-3" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;LLM Note Engine&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;( GPT-4 API / CLAUDE )&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;--&amp;gt; PROMPTED TO CREATE SOAP&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fillColor=#cdeb8b;strokeColor=#36393d;shadow=1;sketch=1;curveFitting=1;jiggle=2;strokeWidth=1.5;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="2866" y="-453" width="210" height="111" as="geometry" />
+        </mxCell>
+        <mxCell id="0I5pf4p2CHR6fEAQSS_W-4" value="&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;OutPut Storage (DB)&lt;/font&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;--&amp;gt; NOTES, TRANSCRIPTION&amp;nbsp;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font style=&quot;color: rgb(0, 0, 0);&quot;&gt;--&amp;gt; PATIENT NAME + DATA&lt;/font&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;fillColor=#cdeb8b;strokeColor=#36393d;direction=west;shadow=1;sketch=1;curveFitting=1;jiggle=2;strokeWidth=1.5;opacity=70;" vertex="1" parent="1">
+          <mxGeometry x="2866" y="-251" width="210" height="111" as="geometry" />
+        </mxCell>
+        <mxCell id="0I5pf4p2CHR6fEAQSS_W-9" value="" style="endArrow=classic;html=1;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=#000000;shadow=1;sketch=1;curveFitting=1;jiggle=2;strokeWidth=1.5;opacity=70;" edge="1" parent="1" source="aDv4anhYwVwWm1UOLou--6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="3151" y="-564" as="sourcePoint" />
+            <mxPoint x="2979" y="-849" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0I5pf4p2CHR6fEAQSS_W-10" value="" style="endArrow=classic;html=1;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=#000000;shadow=1;sketch=1;curveFitting=1;jiggle=2;strokeWidth=1.5;opacity=70;" edge="1" parent="1" source="0I5pf4p2CHR6fEAQSS_W-1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2989" y="-911" as="sourcePoint" />
+            <mxPoint x="2974" y="-658" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0I5pf4p2CHR6fEAQSS_W-11" value="" style="endArrow=classic;html=1;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=#000000;shadow=1;sketch=1;curveFitting=1;jiggle=2;strokeWidth=1.5;opacity=70;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2974" y="-545" as="sourcePoint" />
+            <mxPoint x="2974" y="-480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0I5pf4p2CHR6fEAQSS_W-12" value="" style="endArrow=classic;html=1;rounded=0;hachureGap=4;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;exitX=0.5;exitY=1;exitDx=0;exitDy=0;strokeColor=#000000;shadow=1;sketch=1;curveFitting=1;jiggle=2;strokeWidth=1.5;opacity=70;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="2970.58" y="-338" as="sourcePoint" />
+            <mxPoint x="2970.58" y="-273" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="0I5pf4p2CHR6fEAQSS_W-16" value="&lt;font style=&quot;font-size: 19px;&quot; color=&quot;#000000&quot;&gt;SAMPLE ARCHITECTURE DESIGN FOR AI SCRIBE&amp;nbsp;&lt;/font&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;fontFamily=Architects Daughter;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;align=center;" vertex="1" parent="1">
+          <mxGeometry x="2764" y="-114" width="448" height="120" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
