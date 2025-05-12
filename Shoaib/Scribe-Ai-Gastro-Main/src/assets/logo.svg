@@ -1,0 +1,8 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <path d="M20 10 H40 V40 H20 Z" fill="#1E8E88"/>
+  <path d="M45 15 H60 V35 H45 Z" fill="#F76C5E"/>
+  <text x="65" y="33" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333">
+    MediScribe<tspan fill="#F76C5E">AI</tspan>
+  </text>
+</svg>
