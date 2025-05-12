@@ -95,7 +95,10 @@ const LoginPage = () => {
       </div>
       
       <div className="text-center text-xs text-gray-500 mt-8">
-        <p>For demo purposes, use any email and password</p>
+        <h2>
+
+        <b><p>For demo purposes, use any email and password</p></b>
+        </h2>
       </div>
     </div>
   );
