@@ -1,0 +1,50 @@
+# macOS system files
+.DS_Store
+._*
+
+# Datafiles
+*.sqlite
+data/
+public/CHANGELOG.md
+
+# Logs
+logs/
+*.log
+server/logs/
+
+# Module Files
+node_modules/
+server/node_modules/
+server/venv
+
+# Environment and IDE settings
+.env
+.env.development
+.env.local
+!.env.example
+!.env.test
+.vscode/
+.idea/
+.zed/
+server/.pytest_cache
+oom
+
+# Python compiled files
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build directories
+build/
+dist/
+.tmp/
+
+# Coverage
+coverage/
+.coverage
+coverage.xml
+coverage.lcov
+.coveralls.yml
+__pycache__/
+*.pyc

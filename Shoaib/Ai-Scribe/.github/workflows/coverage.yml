@@ -1,0 +1,49 @@
+name: CI - Tests
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+
+            - name: Build Test Docker Image
+              run: |
+                  docker build -f Dockerfile.test -t phlox-test .
+
+            - name: Run Tests in Docker Container
+              run: |
+                  docker run --name test-container phlox-test
+                  docker cp test-container:/usr/src/app/coverage.xml ./coverage.xml
+                  docker cp test-container:/usr/src/app/coverage.lcov ./coverage.lcov
+
+            - name: Coveralls
+              uses: coverallsapp/github-action@v2
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  file: coverage.lcov
+                  parallel: true
+                  flag-name: run-${{ matrix.python-version }}
+
+            - name: Cleanup
+              run: docker rm test-container
+
+    finish:
+        needs: test
+        if: ${{ always() }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Coveralls Finished
+              uses: coverallsapp/github-action@v2
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  parallel-finished: true
