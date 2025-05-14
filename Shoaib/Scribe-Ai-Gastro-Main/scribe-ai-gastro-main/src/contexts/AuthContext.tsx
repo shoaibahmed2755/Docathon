@@ -1,8 +1,8 @@
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { User, UserPreferences } from "@/types";
 import { toast } from "sonner";
-import { loginAPI, signupAPI } from "@/services/auth"; // ✅ imported real API functions
 
 interface AuthContextType {
   user: User | null;
@@ -18,12 +18,29 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Mock user data for demo
+const MOCK_USER: User = {
+  id: "user-1",
+  name: "Dr. Aditya Sharma",
+  email: "dr.aditya@mediscribe.com",
+  role: "doctor",
+  specialty: "both",
+  clinic: "GI & Obesity Clinic",
+  preferences: {
+    language: "english",
+    noteTemplate: "SOAP",
+    darkMode: false,
+  },
+  createdAt: new Date("2023-01-15"),
+};
+
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
-
+  
+  // Check if user is logged in
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -33,26 +50,36 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         localStorage.removeItem("user");
       }
     }
+    
     setLoading(false);
   }, []);
 
   const login = async (email: string, password: string) => {
     setLoading(true);
     setError(null);
+    
     try {
-      const response = await loginAPI(email, password); // ✅ real API call
-      const userData = response.data;
-      setUser(userData);
-      localStorage.setItem("user", JSON.stringify(userData));
-      toast.success("Login successful!");
-      if (!userData.preferences?.noteTemplate) {
-        navigate("/onboarding");
+      // This is a mock login - in a real app, make an API call
+      if (email && password) {
+        // For demo purposes, use the mock user
+        setUser(MOCK_USER);
+        localStorage.setItem("user", JSON.stringify(MOCK_USER));
+        
+        // Show success toast
+        toast.success("Login successful!");
+        
+        // Check if user has completed onboarding
+        if (!MOCK_USER.preferences?.noteTemplate) {
+          navigate("/onboarding");
+        } else {
+          navigate("/dashboard");
+        }
       } else {
-        navigate("/dashboard");
+        throw new Error("Email and password are required");
       }
-    } catch (err: any) {
-      setError(err.response?.data?.message || err.message);
-      toast.error("Login failed: " + (err.response?.data?.message || err.message));
+    } catch (err) {
+      setError((err as Error).message);
+      toast.error("Login failed: " + (err as Error).message);
     } finally {
       setLoading(false);
     }
@@ -61,16 +88,29 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const signup = async (name: string, email: string, password: string, role: 'doctor' | 'admin') => {
     setLoading(true);
     setError(null);
+    
     try {
-      const response = await signupAPI(name, email, password, role); // ✅ real API call
-      const userData = response.data;
-      setUser(userData);
-      localStorage.setItem("user", JSON.stringify(userData));
-      toast.success("Account created successfully!");
-      navigate("/onboarding");
-    } catch (err: any) {
-      setError(err.response?.data?.message || err.message);
-      toast.error("Signup failed: " + (err.response?.data?.message || err.message));
+      // Mock signup
+      if (name && email && password) {
+        const newUser: User = {
+          id: "user-" + Date.now(),
+          name,
+          email,
+          role,
+          createdAt: new Date(),
+        };
+        
+        setUser(newUser);
+        localStorage.setItem("user", JSON.stringify(newUser));
+        
+        toast.success("Account created successfully!");
+        navigate("/onboarding");
+      } else {
+        throw new Error("All fields are required");
+      }
+    } catch (err) {
+      setError((err as Error).message);
+      toast.error("Signup failed: " + (err as Error).message);
     } finally {
       setLoading(false);
     }
