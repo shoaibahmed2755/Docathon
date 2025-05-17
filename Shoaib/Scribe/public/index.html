@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Scribe</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="sidebar">
+      <h1 class="logo">MediScribe</h1>
+      <nav>
+        <button onclick="showPage('dashboard')" class="nav-btn active">🏠 Dashboard</button>
+        <button onclick="showPage('ai-scribe')" class="nav-btn">🎙️ AI Scribe</button>
+        <button onclick="showPage('patients')" class="nav-btn">👥 Patients</button>
+        <button onclick="showPage('templates')" class="nav-btn">📋 Templates</button>
+      </nav>
+      <div class="sidebar-footer">
+        <button>NEED HELP? CHECK OUR DOCUMENTATION OR CONTACT SUPPORT</button>
+        <button>VIEW DOCS</button>
+      </div>
+    </div>
+    <div class="main-content">
+      <!-- Dashboard -->
+      <div id="dashboard" class="page active">
+        <h2>Dashboard</h2>
+        <div class="stats">
+          <div class="stat-card">
+            <h3>TOTAL PATIENTS</h3>
+            <p id="total-patients">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>APPOINTMENTS TODAY</h3>
+            <p id="appointments-today">0</p>
+          </div>
+          <div class="stat-card">
+            <h3>SAVED TIME</h3>
+            <p>6hrs</p>
+          </div>
+          <div class="stat-card">
+            <h3>TOTAL NOTES</h3>
+            <p id="total-notes">0</p>
+          </div>
+        </div>
+        <div class="content-grid">
+          <div class="card">
+            <h3>Create Appointment</h3>
+            <div id="create-appointment-form">
+              <label>Patient</label>
+              <select id="appointment-patient"></select>
+              <label>Time</label>
+              <input type="text" id="appointment-time" placeholder="e.g., 09:30 am">
+              <label>Purpose</label>
+              <input type="text" id="appointment-purpose" placeholder="e.g., Follow-up">
+              <button onclick="createAppointment()">Create Appointment</button>
+            </div>
+            <h3>Today's Appointments</h3>
+            <div id="appointments-list"></div>
+          </div>
+          <div class="card">
+            <h3>Recent Activity</h3>
+            <p>Consultation completed - 10:30 AM</p>
+            <p>Priya Sharma - Yesterday</p>
+            <p>Recording uploaded - Yesterday</p>
+          </div>
+        </div>
+        <p id="dashboard-error" class="error"></p>
+      </div>
+
+      <!-- Patients -->
+      <div id="patients" class="page">
+        <h2>Patients</h2>
+        <div class="card">
+          <h3>Add New Patient</h3>
+          <div id="create-patient-form">
+            <div class="form-grid">
+              <div>
+                <label>Name</label>
+                <input type="text" id="patient-name">
+              </div>
+              <div>
+                <label>Gender</label>
+                <select id="patient-gender">
+                  <option value="">Select gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div>
+                <label>Age</label>
+                <input type="number" id="patient-age">
+              </div>
+              <div>
+                <label>Medical History</label>
+                <input type="text" id="patient-medical-history">
+              </div>
+              <div>
+                <label>Last Visit (e.g., 18/5/2023)</label>
+                <input type="text" id="patient-last-visit">
+              </div>
+            </div>
+            <button onclick="createPatient()">Add Patient</button>
+          </div>
+          <input type="text" id="patient-search" placeholder="Search patients..." onkeyup="searchPatients()">
+          <table>
+            <thead>
+              <tr>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>MEDICAL HISTORY</th>
+                <th>LAST VISIT</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody id="patients-list"></tbody>
+          </table>
+        </div>
+        <p id="patients-error" class="error"></p>
+      </div>
+
+      <!-- AI Scribe -->
+      <div id="ai-scribe" class="page">
+        <h2>AI Scribe</h2>
+        <div class="content-grid">
+          <div class="card">
+            <h3>Input Method</h3>
+            <div class="input-methods">
+              <button onclick="startRecording()" id="start-recording">🎙️ Start Recording</button>
+              <button onclick="stopRecording()" id="stop-recording" disabled>⏹️ Stop Recording</button>
+              <button class="secondary">UPLOAD</button>
+              <button class="secondary">MANUAL</button>
+            </div>
+            <textarea id="scribe-input" placeholder="Transcribed speech will appear here..."></textarea>
+            <button onclick="processScribe()">Process</button>
+            <p id="scribe-error" class="error"></p>
+          </div>
+          <div class="card">
+            <h3>Consultation Note</h3>
+            <label>Patient</label>
+            <select id="scribe-patient"></select>
+            <label>Chief Complaint</label>
+            <textarea id="scribe-chief-complaint" readonly></textarea>
+            <label>History of Present Illness</label>
+            <textarea id="scribe-history" readonly></textarea>
+            <label>Physical Examination</label>
+            <textarea id="scribe-examination" readonly></textarea>
+            <label>Assessment/Diagnosis</label>
+            <textarea id="scribe-diagnosis" readonly></textarea>
+            <label>Plan</label>
+            <textarea id="scribe-plan" readonly></textarea>
+            <label>Summary</label>
+            <textarea id="scribe-summary" readonly></textarea>
+            <button onclick="saveConsultationNote()">Save Note</button>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Saved Consultation Notes</h3>
+          <div id="consultation-notes-list"></div>
+        </div>
+      </div>
+
+      <!-- Templates -->
+      <div id="templates" class="page">
+        <h2>Templates</h2>
+        <div class="card">
+          <h3>Create Template</h3>
+          <div id="create-template-form">
+            <div class="form-grid">
+              <div>
+                <label>Name</label>
+                <input type="text" id="template-name">
+              </div>
+              <div>
+                <label>Category</label>
+                <input type="text" id="template-category">
+              </div>
+              <div class="full-width">
+                <label>Content</label>
+                <textarea id="template-content"></textarea>
+              </div>
+            </div>
+            <button onclick="createTemplate()">Create Template</button>
+          </div>
+          <input type="text" id="template-search" placeholder="Search templates..." onkeyup="searchTemplates()">
+          <div id="templates-list" class="template-grid"></div>
+        </div>
+        <p id="templates-error" class="error"></p>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
