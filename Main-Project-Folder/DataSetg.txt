@@ -1,0 +1,105 @@
+Doctor: Good morning! How are you feeling today?
+Patient: Good morning, Doctor. I'm feeling much better than last time.
+Doctor: That’s great to hear. Any pain or discomfort?
+Patient: No, just a little tired sometimes.
+Doctor: That’s normal. Are you taking your medicines regularly?
+Patient: Yes, I haven’t missed a dose.
+Doctor: Good. Let me check your vitals quickly. (checks vitals) Everything looks fine.
+Patient: That’s a relief.
+Doctor: Keep following the same routine, and try to get enough rest.
+Patient: Sure, Doctor. Thank you.
+Doctor: You're welcome. I’ll see you again in two weeks for the next follow-up.
+Patient: Okay. Have a nice day!
+Doctor: You too. Take care.
+
+
+Case 1: Stomach Pain Follow-up
+Doctor: Good afternoon! How have you been since your last visit?
+Patient: Good afternoon, Doctor. The stomach pain has reduced a lot.
+Doctor: That’s a good sign. Any issues with digestion or appetite?
+Patient: My appetite is back, but I still feel bloated after meals.
+Doctor: That could be due to gas. Are you avoiding spicy food as advised?
+Patient: Yes, I’ve been eating very light.
+Doctor: Good. I’ll prescribe a mild antacid. (writes prescription)
+Patient: Thank you, Doctor.
+Doctor: Keep monitoring how you feel after eating. If the bloating continues, we’ll do an ultrasound.
+Patient: Okay, I’ll note it down.
+Doctor: See you in ten days for a review.
+Patient: Sure. Thanks again!
+Doctor: Take care and stay hydrated.
+
+Case 2: High Blood Pressure Management
+Doctor: Hello! How’s your blood pressure been lately?
+Patient: Hello, Doctor. It’s been more stable these past few days.
+Doctor: Great. Have you been checking it at home?
+Patient: Yes, twice a day as you told me.
+Doctor: Excellent. Any dizziness or headaches?
+Patient: No, I’ve been feeling fine.
+Doctor: That’s a good sign. Are you walking every day?
+Patient: Yes, 30 minutes every morning.
+Doctor: Perfect. Keep it up and continue your medication.
+Patient: Will do, Doctor.
+Doctor: We’ll do a full check-up next month.
+Patient: Alright. Thank you.
+Doctor: You're welcome. Take care of your diet and avoid too much salt.
+Patient: Sure. See you next time!
+
+Case 3: Follow-up for a Cold and Cough
+Doctor: Hi there! Still coughing or has it improved?
+Patient: Hello, Doctor. The cough is almost gone now.
+Doctor: That’s good. Any fever or sore throat left?
+Patient: No fever, but my throat feels a little dry sometimes.
+Doctor: That’s common after a cold. Drink warm water and avoid cold drinks.
+Patient: Okay, I’ll be careful.
+Doctor: Did you finish the antibiotics course?
+Patient: Yes, I took all five days as you told me.
+Doctor: Good job. I’ll give you a throat lozenge for dryness.
+Patient: Thank you.
+Doctor: No problem. You’re recovering well. Rest properly and avoid dust.
+Patient: I will, Doctor.
+Doctor: Come back if the symptoms return.
+Patient: Sure. Thanks for everything!
+Doctor: Take care. Get well soon!
+
+case4 low bp
+Doctor: Good morning. How are you feeling today?
+
+Patient: Good morning, Doctor. I’ve been feeling very tired lately, especially when I stand up quickly. I also get dizzy sometimes.
+
+Doctor: That sounds like it could be related to low blood pressure. Have you been checking it regularly?
+
+Patient: Yes, I’ve checked a few times at home. It’s usually around 90/60.
+
+Doctor: Alright. Have you made any recent changes in your lifestyle, diet, or medication?
+
+Patient: No major changes. But I’ve noticed that I’ve been gaining weight slowly over the last few months.
+
+Doctor: Any physical activity or regular exercise?
+
+Patient: Not much. My job involves sitting for long hours, and I haven’t had time to work out.
+
+Doctor: Understood. Let me check your vitals.
+(checks BP, weight, height, BMI, pulse)
+Your blood pressure is low, and your BMI indicates obesity. That could explain the fatigue and dizziness.
+
+Patient: Is it serious?
+
+Doctor: It’s not uncommon, but it needs attention. Here’s what we’ll do:
+
+Increase your salt and fluid intake slightly to help with low BP.
+
+Start with light daily exercise — even a 30-minute walk helps.
+
+Follow a balanced, low-calorie diet plan.
+
+I’ll refer you to a dietitian for a detailed meal plan.
+
+We’ll monitor your BP and weight every 2 weeks.
+
+Patient: Okay, I’ll follow that.
+
+Doctor: Great. We’ll review progress in two weeks. If symptoms worsen, let me know earlier.
+
+Patient: Thank you, Doctor.
+
+Doctor: You're welcome. Take care and stay consistent.
