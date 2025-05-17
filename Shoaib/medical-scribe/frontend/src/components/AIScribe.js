@@ -141,6 +141,16 @@ function AIScribe({ navigate }) {
     });
   };
 
+  const handleDeleteNote = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/api/consultation_notes/${id}`);
+      setNotes(notes.filter((note) => note.id !== id));
+      alert("Consultation note deleted successfully!");
+    } catch (err) {
+      setError("Failed to delete consultation note");
+    }
+  };
+
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">AI Scribe</h2>
@@ -251,26 +261,39 @@ function AIScribe({ navigate }) {
       <div className="bg-white p-4 rounded-md shadow mt-4">
         <h3 className="text-lg font-bold mb-4">Saved Consultation Notes</h3>
         <div>
-          {notes.map((note) => (
-            <div
-              key={note.id}
-              className="flex justify-between items-center mb-2"
-            >
-              <div>
-                <span className="inline-flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full mr-2">
-                  {note.patientName[0]}
-                </span>
-                {note.patientName} - {new Date(note.createdAt).toLocaleString()}{" "}
-                - {note.chiefComplaint || "Consultation note"}
-              </div>
-              <button
-                onClick={() => viewNote(note)}
-                className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300"
+          {notes.length === 0 ? (
+            <p>No consultation notes available.</p>
+          ) : (
+            notes.map((note) => (
+              <div
+                key={note.id}
+                className="flex justify-between items-center mb-2"
               >
-                View
-              </button>
-            </div>
-          ))}
+                <div>
+                  <span className="inline-flex items-center justify-center w-8 h-8 bg-green-500 text-white rounded-full mr-2">
+                    {note.patientName[0]}
+                  </span>
+                  {note.patientName} -{" "}
+                  {new Date(note.createdAt).toLocaleString()} -{" "}
+                  {note.chiefComplaint || "Consultation note"}
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => viewNote(note)}
+                    className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300"
+                  >
+                    View
+                  </button>
+                  <button
+                    onClick={() => handleDeleteNote(note.id)}
+                    className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </div>

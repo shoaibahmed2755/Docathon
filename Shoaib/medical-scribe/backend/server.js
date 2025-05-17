@@ -340,7 +340,7 @@ app.post("/api/nlp", async (req, res) => {
   }
 });
 
-// API Endpoint for Consultation Notes
+// API Endpoints for Consultation Notes
 app.post("/api/scribe", (req, res) => {
   const {
     patientId,
@@ -393,6 +393,14 @@ app.get("/api/consultation_notes", (req, res) => {
       res.json(rows);
     }
   );
+});
+
+app.delete("/api/consultation_notes/:id", (req, res) => {
+  const { id } = req.params;
+  db.run("DELETE FROM consultation_notes WHERE id = ?", id, function (err) {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json({ message: "Consultation note deleted" });
+  });
 });
 
 // Serve the React frontend
