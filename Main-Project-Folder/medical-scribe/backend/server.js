@@ -268,49 +268,127 @@ app.post("/api/nlp", async (req, res) => {
       return res.status(400).json({ error: "Text is required" });
     }
 
-    // Simple keyword-based structuring
-    const lowerText = text.toLowerCase();
+    // Split the text into sentences
     const sentences = text.split(/[.!?]+/).filter((s) => s.trim());
-    let chiefComplaint = "Not specified";
-    let history = "Not specified";
-    let examination = "Not specified";
-    let diagnosis = "Not specified";
-    let plan = "Not specified";
 
+    // Initialize fields as arrays to collect multiple relevant sentences
+    let chiefComplaintSentences = [];
+    let historySentences = [];
+    let examinationSentences = [];
+    let diagnosisSentences = [];
+    let planSentences = [];
+
+    // Expanded keyword lists for each field
+    const chiefComplaintKeywords = [
+      "complaint",
+      "presents with",
+      "issue",
+      "symptom",
+      "experiencing",
+      "reports",
+      "complains of",
+      "suffering from",
+      "pain",
+      "discomfort",
+    ];
+    const historyKeywords = [
+      "history",
+      "past",
+      "since",
+      "previously",
+      "known",
+      "diagnosed with",
+      "had",
+      "for the last",
+      "over the past",
+      "chronic",
+    ];
+    const examinationKeywords = [
+      "examination",
+      "exam",
+      "findings",
+      "on exam",
+      "vital signs",
+      "heart rate",
+      "blood pressure",
+      "temperature",
+      "respiratory rate",
+      "physical",
+      "observed",
+      "noted",
+    ];
+    const diagnosisKeywords = [
+      "diagnosis",
+      "condition",
+      "assessment",
+      "likely",
+      "suspected",
+      "confirmed",
+      "consistent with",
+      "indicative of",
+      "suggests",
+      "appears to be",
+    ];
+    const planKeywords = [
+      "plan",
+      "treatment",
+      "follow-up",
+      "recommend",
+      "prescribe",
+      "advise",
+      "schedule",
+      "monitor",
+      "refer",
+      "manage",
+    ];
+
+    // Process each sentence and assign to relevant fields
     for (const sentence of sentences) {
       const lowerSentence = sentence.toLowerCase().trim();
-      if (
-        lowerSentence.includes("complaint") ||
-        lowerSentence.includes("presents with") ||
-        lowerSentence.includes("issue")
-      ) {
-        chiefComplaint = sentence.trim();
-      } else if (
-        lowerSentence.includes("history") ||
-        lowerSentence.includes("past") ||
-        lowerSentence.includes("since")
-      ) {
-        history = sentence.trim();
-      } else if (
-        lowerSentence.includes("examination") ||
-        lowerSentence.includes("exam") ||
-        lowerSentence.includes("findings")
-      ) {
-        examination = sentence.trim();
-      } else if (
-        lowerSentence.includes("diagnosis") ||
-        lowerSentence.includes("condition") ||
-        lowerSentence.includes("assessment")
-      ) {
-        diagnosis = sentence.trim();
-      } else if (
-        lowerSentence.includes("plan") ||
-        lowerSentence.includes("treatment") ||
-        lowerSentence.includes("follow-up")
-      ) {
-        plan = sentence.trim();
+      if (!lowerSentence) continue;
+
+      // Check for Chief Complaint
+      if (chiefComplaintKeywords.some((keyword) => lowerSentence.includes(keyword))) {
+        chiefComplaintSentences.push(sentence.trim());
+      }
+
+      // Check for History
+      if (historyKeywords.some((keyword) => lowerSentence.includes(keyword))) {
+        historySentences.push(sentence.trim());
+      }
+
+      // Check for Physical Examination
+      if (examinationKeywords.some((keyword) => lowerSentence.includes(keyword))) {
+        examinationSentences.push(sentence.trim());
+      }
+
+      // Check for Diagnosis
+      if (diagnosisKeywords.some((keyword) => lowerSentence.includes(keyword))) {
+        diagnosisSentences.push(sentence.trim());
+      }
+
+      // Check for Plan
+      if (planKeywords.some((keyword) => lowerSentence.includes(keyword))) {
+        planSentences.push(sentence.trim());
       }
     }
+
+    // Join the sentences for each field, or set to "Not specified" if empty
+    const chiefComplaint = chiefComplaintSentences.length
+      ? chiefComplaintSentences.join(". ") + "."
+      : "Not specified";
+    const history = historySentences.length
+      ? historySentences.join(". ") + "."
+      : "Not specified";
+    const examination = examinationSentences.length
+      ? examinationSentences.join(". ") + "."
+      : "Not specified";
+    const diagnosis = diagnosisSentences.length
+      ? diagnosisSentences.join(". ") + "."
+      : "Not specified";
+    const plan = planSentences.length
+      ? planSentences.join(". ") + "."
+      : "Not specified";
 
     // Summarization using Hugging Face API
     const huggingFaceResponse = await axios.post(
